@@ -29,4 +29,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_SERVER_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
 
+app.get('/', (req, res) => {
+    res.send('Hello, world!');
+  });
 app.use("/", router());
