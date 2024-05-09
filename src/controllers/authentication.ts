@@ -1,7 +1,6 @@
 import express from 'express';
 import { getUsersByEmail, createUser } from '../db/users';
 import {random, authentication} from '../helpers';
-import { UserModel } from '../db/users';
 
 export const login = async (req: express.Request, res: express.Response) => {
     try{
@@ -30,7 +29,7 @@ export const login = async (req: express.Request, res: express.Response) => {
 
         await user.save();
 
-        res.cookie('', user.authentication.sessionToken, {domain: 'localhost', path : '/'});
+        res.cookie('VARUN-AUTH', user.authentication.sessionToken, {domain: 'localhost', path : '/'});
 
         return res.status(200).json(user).end();
 

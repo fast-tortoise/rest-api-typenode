@@ -23,16 +23,14 @@ server.listen(8080, () => {
     console.log('listening on http://localhost:8080');
 });
 
-const MONGODB_SERVER_URL = "mongodb+srv://varunkumarsde:HMume44IZ8zSclDA@cluster0.twevqcu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const MONGODB_SERVER_URL = "mongodb+srv://varunkumarsde:pass@cluster0.twevqcu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_SERVER_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
 
-console.log('line before router');
 app.use("/", router());
 
 app.get('/', (req, res) => {
-    console.log('inside get request');
     res.send('Hello, world!');
   });
