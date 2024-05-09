@@ -29,7 +29,10 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_SERVER_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
 
+console.log('line before router');
+app.use("/", router());
+
 app.get('/', (req, res) => {
+    console.log('inside get request');
     res.send('Hello, world!');
   });
-app.use("/", router());
